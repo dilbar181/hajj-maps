@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Masjid al-Haram (Kaaba)",
+    "shortName": "Kaaba",
+    "lat": 21.4225,
+    "lng": 39.8262,
+    "order": 1,
+    "icon": "kaaba",
+    "color": "#C8A951",
+    "description": "The Kaaba is the cubic structure at the center of Masjid al-Haram, the most sacred site in Islam. Pilgrims perform Tawaf — circling the Kaaba seven times counterclockwise. This is the first major ritual of Hajj and is known as Tawaf al-Qudum (the Tawaf of Arrival).",
+    "ritual": "Tawaf al-Qudum",
+    "details": "Pilgrims circle the Kaaba 7 times counterclockwise, beginning and ending at the Black Stone (Hajar al-Aswad). They then pray 2 rakats near Maqam Ibrahim and drink from the Zamzam Well."
+  },
+  {
+    "id": 2,
+    "name": "Safa",
+    "shortName": "Safa",
+    "lat": 21.4232,
+    "lng": 39.8272,
+    "order": 2,
+    "icon": "hill",
+    "color": "#2E7D32",
+    "description": "Al-Safa is a small hill near Masjid al-Haram from where pilgrims begin the Sa'i — the ritual walk between Safa and Marwah. This commemorates Hajar's (Hagar's) desperate search for water for her son Ishmael.",
+    "ritual": "Sa'i (Start)",
+    "details": "Pilgrims stand at Safa, face the Kaaba, recite supplications, and then begin walking toward Marwah. The distance between the two hills is approximately 450 meters. Pilgrims make this journey 7 times."
+  },
+  {
+    "id": 3,
+    "name": "Marwah",
+    "shortName": "Marwah",
+    "lat": 21.4253,
+    "lng": 39.8267,
+    "order": 3,
+    "icon": "hill",
+    "color": "#2E7D32",
+    "description": "Al-Marwah is the second hill in the Sa'i ritual. The walk between Safa and Marwah (7 times) commemorates Hajar's search for water. The Sa'i ends at Marwah on the 7th pass.",
+    "ritual": "Sa'i (End)",
+    "details": "After walking from Safa to Marwah (1 lap), pilgrims return to Safa (2 laps) and continue for 7 total laps, ending at Marwah. Men are encouraged to jog between the two green markers."
+  },
+  {
+    "id": 4,
+    "name": "Mina",
+    "shortName": "Mina",
+    "lat": 21.4133,
+    "lng": 39.8933,
+    "order": 4,
+    "icon": "tent",
+    "color": "#1565C0",
+    "description": "Mina is a valley city of tents located about 5 km east of Mecca. Pilgrims spend several nights here during Hajj. Known as the 'City of Tents', it hosts over 2 million pilgrims in its vast tent city.",
+    "ritual": "Staying in Mina",
+    "details": "On the 8th of Dhul Hijjah (Tarwiyah Day), pilgrims travel to Mina and spend the night. They return again after Arafah and Muzdalifah to perform the Rami (stoning of the devil) on the 10th, 11th, and 12th."
+  },
+  {
+    "id": 5,
+    "name": "Mount Arafat",
+    "shortName": "Arafah",
+    "lat": 21.3547,
+    "lng": 39.9836,
+    "order": 5,
+    "icon": "mountain",
+    "color": "#6A1B9A",
+    "description": "The Plain of Arafat is the most critical station of Hajj. On the 9th of Dhul Hijjah, pilgrims spend the afternoon here in prayer and remembrance of God. Without this standing (Wuquf), the Hajj is not valid.",
+    "ritual": "Wuquf (Standing at Arafat)",
+    "details": "Pilgrims arrive at Arafat after Dhuhr prayer on the 9th of Dhul Hijjah. They spend the afternoon in prayer, supplication, and remembrance of Allah until sunset. Jabal al-Rahmah (Mountain of Mercy) is located here."
+  },
+  {
+    "id": 6,
+    "name": "Muzdalifah",
+    "shortName": "Muzdalifah",
+    "lat": 21.3800,
+    "lng": 39.9360,
+    "order": 6,
+    "icon": "night",
+    "color": "#00695C",
+    "description": "Muzdalifah is an open plain between Mina and Arafat. After sunset at Arafat, pilgrims travel here to spend the night under the open sky, collect pebbles for the stoning ritual, and pray Maghrib and Isha combined.",
+    "ritual": "Overnight Stay & Pebble Collection",
+    "details": "Pilgrims arrive at Muzdalifah after leaving Arafat at sunset on the 9th. They pray, sleep under the stars, and collect 49-70 small pebbles for the Rami ritual at Jamarat. They depart before sunrise on the 10th."
+  },
+  {
+    "id": 7,
+    "name": "Jamarat Bridge",
+    "shortName": "Jamarat",
+    "lat": 21.4228,
+    "lng": 39.8733,
+    "order": 7,
+    "icon": "pillar",
+    "color": "#BF360C",
+    "description": "The Jamarat Bridge is where pilgrims perform Rami — the symbolic stoning of the devil. There are three pillars (Jamarat) representing the three locations where Ibrahim rejected the devil's temptations.",
+    "ritual": "Rami (Stoning of the Devil)",
+    "details": "On the 10th of Dhul Hijjah (Eid al-Adha), pilgrims throw 7 pebbles at the largest pillar (Jamrat al-Aqaba). On the 11th and 12th, they stone all three pillars with 7 pebbles each. This symbolizes rejecting evil."
+  }
+]

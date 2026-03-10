@@ -1,0 +1,724 @@
+/* ============================================================
+   HAJJ MAPS — style.css
+   Islamic color theme: deep green, gold, ivory, rich brown
+   ============================================================ */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --gold:         #C8A951;
+  --gold-light:   #E8CC7A;
+  --gold-dark:    #9A7A2E;
+  --green:        #1B4D2E;
+  --green-mid:    #2E7D32;
+  --green-light:  #4CAF50;
+  --ivory:        #F9F4E8;
+  --ivory-dark:   #EDE4CC;
+  --brown:        #3E2723;
+  --text-dark:    #1A1209;
+  --text-mid:     #4A3728;
+  --text-light:   #8D6E63;
+  --sim-bg:       rgba(15, 30, 18, 0.96);
+  --shadow-sm:    0 2px 8px rgba(0,0,0,0.18);
+  --shadow-md:    0 6px 24px rgba(0,0,0,0.22);
+  --shadow-lg:    0 16px 48px rgba(0,0,0,0.3);
+  --radius:       10px;
+  --sidebar-w:    320px;
+  --header-h:     62px;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body:    'Crimson Pro', Georgia, serif;
+  --transition:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--brown);
+  color: var(--text-dark);
+  overflow: hidden;
+}
+
+/* ---------- HEADER ---------- */
+.app-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 1100;
+  background: var(--green);
+  border-bottom: 2px solid var(--gold);
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 16px 0 20px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(200,169,81,0.5));
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(200,169,81,0.4)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(200,169,81,0.8)); }
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.logo-subtitle {
+  font-size: 11px;
+  color: var(--gold-light);
+  opacity: 0.75;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Header controls */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ctrl-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid rgba(200,169,81,0.4);
+  border-radius: 6px;
+  background: rgba(200,169,81,0.1);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.ctrl-btn:hover {
+  background: rgba(200,169,81,0.22);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200,169,81,0.2);
+}
+
+.ctrl-btn--primary {
+  background: var(--gold-dark);
+  border-color: var(--gold);
+  color: var(--brown);
+  font-weight: 700;
+}
+
+.ctrl-btn--primary:hover {
+  background: var(--gold);
+  color: var(--brown);
+}
+
+.ctrl-btn--primary.active {
+  background: #c0392b;
+  border-color: #e74c3c;
+  color: #fff;
+}
+
+.ctrl-btn--icon {
+  padding: 7px 11px;
+  font-size: 18px;
+  display: none;
+}
+
+.btn-icon { font-size: 14px; }
+
+/* Simulation progress bar */
+.sim-progress-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(200,169,81,0.2);
+}
+
+.sim-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  transition: width 0.6s ease;
+  width: 0%;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.app-main {
+  display: flex;
+  height: 100vh;
+  padding-top: var(--header-h);
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  width: var(--sidebar-w);
+  height: 100%;
+  background: linear-gradient(180deg, var(--green) 0%, #0f2018 100%);
+  border-right: 2px solid var(--gold-dark);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+  z-index: 900;
+}
+
+.sidebar-header {
+  padding: 22px 22px 8px;
+  border-bottom: 1px solid rgba(200,169,81,0.2);
+}
+
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sidebar-subtitle {
+  font-size: 12px;
+  color: var(--gold-light);
+  opacity: 0.6;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* Islamic geometric ornament */
+.sidebar-ornament {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 6px,
+    var(--gold-dark) 6px,
+    var(--gold-dark) 8px,
+    transparent 8px,
+    transparent 14px,
+    var(--gold) 14px,
+    var(--gold) 18px
+  );
+  opacity: 0.5;
+  margin: 0 16px;
+}
+
+/* Location List */
+.location-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) transparent;
+}
+
+.location-list::-webkit-scrollbar { width: 4px; }
+.location-list::-webkit-scrollbar-track { background: transparent; }
+.location-list::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+.loc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 18px;
+  cursor: pointer;
+  transition: background var(--transition);
+  border-bottom: 1px solid rgba(200,169,81,0.07);
+  position: relative;
+}
+
+.loc-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background var(--transition);
+}
+
+.loc-item:hover {
+  background: rgba(200,169,81,0.1);
+}
+
+.loc-item:hover::before,
+.loc-item.active::before {
+  background: var(--gold);
+}
+
+.loc-item.active {
+  background: rgba(200,169,81,0.15);
+}
+
+.loc-item.sim-highlight {
+  background: rgba(200,169,81,0.25);
+  animation: sim-pulse 1s ease-in-out infinite;
+}
+
+@keyframes sim-pulse {
+  0%, 100% { background: rgba(200,169,81,0.15); }
+  50%       { background: rgba(200,169,81,0.35); }
+}
+
+.loc-order {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brown);
+  flex-shrink: 0;
+  margin-top: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.loc-info { flex: 1; min-width: 0; }
+
+.loc-name {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ivory);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loc-ritual {
+  font-size: 11.5px;
+  color: var(--gold-light);
+  opacity: 0.75;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.loc-arrow {
+  font-size: 12px;
+  color: var(--gold-dark);
+  opacity: 0;
+  transition: opacity var(--transition);
+  align-self: center;
+}
+
+.loc-item:hover .loc-arrow { opacity: 1; }
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(200,169,81,0.2);
+  background: rgba(0,0,0,0.2);
+}
+
+.arabic-text {
+  font-size: 18px;
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.verse-translation {
+  font-size: 11px;
+  color: var(--ivory);
+  opacity: 0.55;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ---------- MAP ---------- */
+.map-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: #1a2e1a;
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+  background: linear-gradient(135deg, #0f2018 0%, #1B4D2E 100%);
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg), 0 0 24px rgba(200,169,81,0.15);
+  padding: 0;
+  color: var(--ivory);
+  max-width: 300px;
+  min-width: 250px;
+}
+
+.leaflet-popup-tip {
+  background: #1B4D2E;
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+}
+
+.leaflet-popup-content { margin: 0; width: auto !important; }
+
+.popup-inner {
+  padding: 16px 18px 14px;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(200,169,81,0.3);
+}
+
+.popup-order {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brown);
+  flex-shrink: 0;
+}
+
+.popup-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1.2;
+}
+
+.popup-ritual {
+  display: inline-block;
+  background: rgba(200,169,81,0.2);
+  border: 1px solid rgba(200,169,81,0.35);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.popup-description {
+  font-size: 13px;
+  color: var(--ivory);
+  line-height: 1.65;
+  opacity: 0.88;
+}
+
+.leaflet-popup-close-button {
+  color: var(--gold) !important;
+  font-size: 18px !important;
+  top: 8px !important;
+  right: 10px !important;
+}
+
+/* Leaflet marker override */
+.hajj-marker-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: var(--shadow-md), 0 0 0 2px rgba(255,255,255,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.hajj-marker-icon:hover {
+  transform: rotate(-45deg) scale(1.15);
+  box-shadow: var(--shadow-lg), 0 0 12px rgba(200,169,81,0.5);
+}
+
+.hajj-marker-icon .marker-inner {
+  transform: rotate(45deg);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.hajj-marker-icon.sim-active {
+  animation: marker-active 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes marker-active {
+  from { box-shadow: 0 0 0 0 rgba(200,169,81,0.7), var(--shadow-md); }
+  to   { box-shadow: 0 0 0 14px rgba(200,169,81,0), var(--shadow-md); }
+}
+
+/* ---------- SIMULATION PANEL ---------- */
+.sim-panel {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 800;
+  width: 92%;
+  max-width: 520px;
+  animation: slide-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.sim-panel-inner {
+  background: var(--sim-bg);
+  border: 1.5px solid var(--gold);
+  border-radius: 14px;
+  padding: 20px 22px 16px;
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(200,169,81,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.sim-step-badge {
+  display: inline-block;
+  background: rgba(200,169,81,0.2);
+  border: 1px solid var(--gold-dark);
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.sim-location-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 3px;
+  letter-spacing: 0.03em;
+}
+
+.sim-ritual-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--gold-light);
+  opacity: 0.8;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.sim-description {
+  font-size: 13.5px;
+  color: var(--ivory);
+  opacity: 0.85;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  max-height: 80px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) transparent;
+}
+
+.sim-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sim-btn {
+  flex: 1;
+  padding: 9px 14px;
+  border-radius: 7px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid rgba(200,169,81,0.35);
+  background: rgba(200,169,81,0.1);
+  color: var(--ivory);
+}
+
+.sim-btn:hover:not(:disabled) {
+  background: rgba(200,169,81,0.22);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.sim-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.sim-btn--primary {
+  background: var(--gold-dark);
+  border-color: var(--gold);
+  color: var(--brown);
+  font-weight: 700;
+}
+
+.sim-btn--primary:hover:not(:disabled) {
+  background: var(--gold);
+  color: var(--brown);
+}
+
+.sim-btn--stop {
+  flex: 0;
+  padding: 9px 14px;
+  background: rgba(192, 57, 43, 0.2);
+  border-color: rgba(192, 57, 43, 0.5);
+  color: #e88;
+}
+
+.sim-btn--stop:hover {
+  background: rgba(192, 57, 43, 0.4);
+  border-color: #e74c3c;
+  color: #fff;
+}
+
+/* ---------- MAP LEGEND ---------- */
+.map-legend {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 700;
+  background: rgba(15, 30, 18, 0.92);
+  border: 1px solid rgba(200,169,81,0.35);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(8px);
+  min-width: 140px;
+}
+
+.legend-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(200,169,81,0.2);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--ivory);
+  opacity: 0.82;
+  margin-bottom: 5px;
+  font-family: var(--font-body);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-line {
+  width: 20px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px, var(--gold) 4px,
+    transparent 4px, transparent 7px
+  );
+  flex-shrink: 0;
+}
+
+/* ---------- Leaflet tile attribution ---------- */
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  opacity: 0.5;
+  background: rgba(0,0,0,0.5) !important;
+  color: #ccc !important;
+}
+
+.leaflet-control-attribution a { color: #aaa !important; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 280px; }
+
+  .sidebar {
+    position: fixed;
+    left: 0; top: var(--header-h); bottom: 0;
+    transform: translateX(-100%);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.open { transform: translateX(0); }
+
+  .ctrl-btn--icon { display: flex; }
+  .btn-label { display: none; }
+  .ctrl-btn { padding: 7px 10px; }
+  .ctrl-btn--primary { padding: 7px 10px; }
+
+  .map-legend { display: none; }
+
+  .sim-panel {
+    bottom: 16px;
+    width: 96%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-subtitle { display: none; }
+  .logo-title { font-size: 17px; }
+  .logo-icon { font-size: 22px; }
+}

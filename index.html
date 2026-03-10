@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hajj Maps — Panduan Perjalanan Suci</title>
+
+  <!-- Leaflet.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Google Fonts: Cinzel (display) + Crimson Pro (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- App Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">☪</span>
+        <div class="logo-text">
+          <span class="logo-title">Hajj Maps</span>
+          <span class="logo-subtitle">Panduan Perjalanan Suci</span>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button id="btn-toggle-route" class="ctrl-btn" title="Tampilkan/Sembunyikan Rute Haji">
+          <span class="btn-icon">🗺</span>
+          <span class="btn-label">Rute</span>
+        </button>
+        <button id="btn-simulation" class="ctrl-btn ctrl-btn--primary" title="Mulai Simulasi Haji">
+          <span class="btn-icon">▶</span>
+          <span class="btn-label">Mulai Simulasi Haji</span>
+        </button>
+        <button id="btn-toggle-sidebar" class="ctrl-btn ctrl-btn--icon" title="Buka/Tutup Menu" aria-label="Buka atau tutup menu samping">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+    <!-- Simulation progress bar -->
+    <div id="sim-progress-bar" class="sim-progress-bar" style="display:none;">
+      <div id="sim-progress-fill" class="sim-progress-fill"></div>
+    </div>
+  </header>
+
+  <!-- ===================== MAIN LAYOUT ===================== -->
+  <main class="app-main">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Tempat Suci</h2>
+        <p class="sidebar-subtitle">Klik lokasi untuk navigasi ke peta</p>
+      </div>
+      <div class="sidebar-ornament"></div>
+      <!-- Location list injected by JS -->
+      <ul id="location-list" class="location-list" role="list"></ul>
+
+      <div class="sidebar-footer">
+        <div class="footer-verse">
+          <p class="arabic-text">وَأَذِّن فِي النَّاسِ بِالْحَجِّ</p>
+          <p class="verse-translation">"Dan serukanlah kepada manusia untuk mengerjakan haji." — QS. Al-Hajj: 27</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Map Container -->
+    <div class="map-wrapper">
+      <div id="map"></div>
+
+      <!-- Simulation Overlay Panel -->
+      <div id="sim-panel" class="sim-panel" style="display:none;">
+        <div class="sim-panel-inner">
+          <div class="sim-step-badge" id="sim-step-badge">Step 1 / 7</div>
+          <h3 id="sim-location-name" class="sim-location-name">—</h3>
+          <p id="sim-ritual-name" class="sim-ritual-name">—</p>
+          <p id="sim-description" class="sim-description">—</p>
+          <div class="sim-controls">
+            <button id="btn-sim-prev" class="sim-btn" disabled>← Sebelumnya</button>
+            <button id="btn-sim-next" class="sim-btn sim-btn--primary">Selanjutnya →</button>
+            <button id="btn-sim-stop" class="sim-btn sim-btn--stop">✕ Selesai</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Legend -->
+      <div class="map-legend">
+        <div class="legend-title">Keterangan</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#C8A951"></span>Masjid Suci</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#2E7D32"></span>Bukit Sa'i</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#1565C0"></span>Mina</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#6A1B9A"></span>Arafah</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#00695C"></span>Muzdalifah</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#BF360C"></span>Jumrah</div>
+        <div class="legend-item"><span class="legend-line"></span>Rute Haji</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- Leaflet.js -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- App Script -->
+  <script src="script.js"></script>
+</body>
+</html>
